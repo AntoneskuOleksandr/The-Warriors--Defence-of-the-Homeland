@@ -3,10 +3,11 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public float foodRegenRate = 1f;
 
     public UnityEvent onFoodChanged;
+    public UnityEvent onStartFoodGenerating;
 
     private float foodCount;
 
@@ -23,7 +24,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        onStartFoodGenerating.Invoke();
     }
 
     private void Update()
